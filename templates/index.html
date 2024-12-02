@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>YOLOv5 Object Detection</title>
+	</head>
+	<body>
+		<h1>Upload Image or Video for YOLOv5 Detection</h1>
+		<form action="/upload" method="post" enctype="multipart/form-data">
+			<input type="file" name="file" accept="image/*,video/*" required />
+			<button type="submit">Upload</button>
+		</form>
+		<button id="startWebcam">Start Webcam</button>
+  		<button id="stopWebcam" style="display: none;">Stop Webcam</button>
+		<div id="result">
+		</div>
+
+		<div id="webcamContainer" style="display: none;">
+			<h3>Webcam Feed:</h3>
+			<img id="webcamFeed" src="/webcam">
+		</div>
+        
+		<script>
+			const startWebcamButton = document.getElementById('startWebcam');
+      	    const stopWebcamButton = document.getElementById('stopWebcam');
+      	    const webcamContainer = document.getElementById('webcamContainer');
+      	    const webcamFeed = document.getElementById('webcamFeed');
+			document.querySelector("form").onsubmit = async function (event) {
+			event.preventDefault();
+
+			const formData = new FormData(this);
+			const response = await fetch("/upload", {
+				method: "POST",
+				body: formData,
+			});
+
+			const result = await response.json();
+
+			const resultDiv = document.getElementById("result");
+			if (result.output) {
+				if (result.output.endsWith(".mp4")) {
+					resultDiv.innerHTML = `
+						<h2>Processed Video:</h2>
+						<video width="600" controls>
+							<source src="../${result.output}" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+						<h1>${result.detected_classes.length}</h1>
+					`;
+				} else {
+					resultDiv.innerHTML = `
+						<h2>Processed Image:</h2>
+						<img src="../${result.output}" width="600">
+					`;
+				}
+				
+				// Display detected classes
+				if (result.detected_classes && result.detected_classes.length > 0 && result.output.endsWith(".jpg") ) {
+					const classesHtml = result.detected_classes
+						.map(cls => `<p>Detected Class: ${cls.name} (ID: ${cls.id})</p>`)
+						.join("");
+					resultDiv.innerHTML += `
+						<h3>Detected Classes:</h3>
+						${classesHtml}
+					`;
+				}
+				else if(result.detected_classes && result.detected_classes.length > 0){
+					const classesHtml = result.detected_classes
+                        .map(cls => `<p>Detected Class ID: ${cls}</p>`)
+                        .join("");
+                    resultDiv.innerHTML += `
+                        <h3>Detected Classes:</h3>
+                        ${classesHtml}
+                    `;
+				}
+			} else {
+				resultDiv.innerHTML = `<h2>Error:</h2><p>${result.error}</p>`;
+			}
+		};
+
+		startWebcamButton.onclick = () => {
+            webcamContainer.style.display = 'block';
+            webcamFeed.src = '/webcam';
+            startWebcamButton.style.display = 'none';
+            stopWebcamButton.style.display = 'inline';
+        };
+
+        stopWebcamButton.onclick = () => {
+            webcamContainer.style.display = 'none';
+            webcamFeed.src = '';  // Stop the feed
+            stopWebcamButton.style.display = 'none';
+            startWebcamButton.style.display = 'inline';
+        };
+		</script>
+	</body>
+</html>
+
