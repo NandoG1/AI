@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, Response
+from flask import Flask, request, jsonify, render_template, Response, send_from_directory
 import torch
 import cv2
 import os
@@ -23,6 +23,38 @@ def home():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    if 'file' not in request.files:
+        return jsonify({"error": "No file part"})
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({"error": "No selected file"})
+    if file:
+        file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+        file.save(file_path)
+
+        # Initialize the results
+        results = {}
+
+        # Process image or video
+        if file.filename.lower().endswith(('.png', '.jpg', '.jpeg')):
+            detections = process_image(file_path)
+        elif file.filename.lower().endswith(('.mp4', '.avi', '.mov')):
+            detections = process_video(file_path)
+        else:
+            return jsonify({"error": "Unsupported file format"})
+
+        # Extract detected class IDs and names
+        class_ids = detections.get("class_ids", [])
+        class_names = detections.get("class_names", [])
+
+        # Include detected classes in the response
+        results.update(detections)
+        results["detected_classes"] = [{"id": cid, "name": cname} for cid, cname in zip(class_ids, class_names)]
+
+        return jsonify(results)
+    
+@app.route('/upload-image', methods=['POST'])
+def upload_file1():
     if 'file' not in request.files:
         return jsonify({"error": "No file part"})
     file = request.files['file']
@@ -146,52 +178,89 @@ def plot_one_box(xyxy, img, label=None, color=(255, 0, 0), line_thickness=2):
 def process_video(video_path):
     cap = cv2.VideoCapture(video_path)
     frame_count = 0
-    output_path = os.path.join(RESULTS_FOLDER, f'output_{os.path.basename(video_path)}')
+    output_path = os.path.join(RESULTS_FOLDER, f"output_{os.path.basename(video_path)}")
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     out = cv2.VideoWriter(output_path, fourcc, cap.get(cv2.CAP_PROP_FPS),
                           (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))))
-
-    detected_classes = set()  # Use a set to store unique class IDs
 
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
             break
-        
-        results = model(frame)  # YOLOv5 inference
-        
-        # Filter detections based on confidence
-        predictions = results.pred[0]  # Access predictions tensor
-        filtered_predictions = predictions[predictions[:, 4] > 0.5]  # Confidence > 50%
-        
-        # Extract class IDs for this frame
-        class_ids = filtered_predictions[:, 5].cpu().numpy()
-        
-        # Add class IDs to the set (ensures uniqueness)
-        detected_classes.update(class_ids)
 
-        # Render the results on the frame (optional)
-        results.pred[0] = filtered_predictions
-        rendered_frame = results.render()[0]
-        out.write(rendered_frame)  # Write the frame to the output video
-        
+        results = model(frame)
+
+        # Filter predictions by confidence
+        predictions = results.pred[0]
+        filtered_predictions = predictions[predictions[:, 4] > 0.5]
+
+        # Annotate frame
+        annotated_frame = frame.copy()
+        for det in filtered_predictions:
+            x1, y1, x2, y2, conf, class_id = det
+            label = f"{model.names[int(class_id)]} {conf:.2f}"
+            cv2.rectangle(annotated_frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 2)
+            cv2.putText(annotated_frame, label, (int(x1), int(y1) - 10),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+
+        out.write(annotated_frame)
         frame_count += 1
 
     cap.release()
     out.release()
+    return {"result": "Video processed successfully", "output": f"/static/results/output_{os.path.basename(video_path)}"}
 
-    # Convert set to list for easier processing in frontend
-    detected_classes_list = list(detected_classes)
+##
 
-    # Construct the URL for the processed video
-    output_url = f"/static/results/{os.path.basename(output_path)}"
-    output_url = output_url.replace("\\", "/")  # Ensure forward slashes for URLs
+# def process_video(video_path):
+#     cap = cv2.VideoCapture(video_path)
+#     frame_count = 0
+#     output_path = os.path.join(RESULTS_FOLDER, f'output_{os.path.basename(video_path)}')
+#     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+#     out = cv2.VideoWriter(output_path, fourcc, cap.get(cv2.CAP_PROP_FPS),
+#                           (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))))
 
-    return {
-        "result": "Video processed successfully",
-        "output": output_url,
-        "detected_classes": detected_classes_list  # Send back the unique detected classes
-    }
+#     detected_classes = set()  # Use a set to store unique class IDs
+
+#     while cap.isOpened():
+#         ret, frame = cap.read()
+#         if not ret:
+#             break
+        
+#         results = model(frame)  # YOLOv5 inference
+        
+#         # Filter detections based on confidence
+#         predictions = results.pred[0]  # Access predictions tensor
+#         filtered_predictions = predictions[predictions[:, 4] > 0.5]  # Confidence > 50%
+        
+#         # Extract class IDs for this frame
+#         class_ids = filtered_predictions[:, 5].cpu().numpy()
+        
+#         # Add class IDs to the set (ensures uniqueness)
+#         detected_classes.update(class_ids)
+
+#         # Render the results on the frame (optional)
+#         results.pred[0] = filtered_predictions
+#         rendered_frame = results.render()[0]
+#         out.write(rendered_frame)  # Write the frame to the output video
+        
+#         frame_count += 1
+
+#     cap.release()
+#     out.release()
+
+#     # Convert set to list for easier processing in frontend
+#     detected_classes_list = list(detected_classes)
+
+#     # Construct the URL for the processed video
+#     output_url = f"/static/results/{os.path.basename(output_path)}"
+#     output_url = output_url.replace("\\", "/")  # Ensure forward slashes for URLs
+
+#     return {
+#         "result": "Video processed successfully",
+#         "output": output_url,
+#         "detected_classes": detected_classes_list  # Send back the unique detected classes
+#     }
 
 
 def webcam_feed():
@@ -462,6 +531,9 @@ def webcam():
 #     # Return the classes detected and the path to the output image
 #     return {"result": "Image processed successfully", "output": output_path, "detected_classes": detected_classes}
 
+@app.route('/static/results/<path:filename>')
+def download_file(filename):
+    return send_from_directory(RESULTS_FOLDER, filename, as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=True)
