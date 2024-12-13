@@ -319,14 +319,6 @@
 		</div>
 		<p id="header">Unlock the power of <span> AI Object Detection</span></p>
 		<p id="des">Scan with the <span id="des-1">smartest AI</span>. Object Detection for Animal. Model with <span id="des-2">YOLOv5</span></p>
-		<!-- <div>
-			<form action="/upload" method="post" enctype="multipart/form-data">
-				<input type="file" name="file" accept="image/*,video/*" required  />
-				<button type="submit">+</button>
-			</form>
-			<button id="startWebcam">Start Webcam</button>
-			<button id="stopWebcam" style="display: none;">Stop Webcam</button>
-		</div> -->
 		<div id="container-input">
 
 		
@@ -363,34 +355,6 @@
 			
 		</div>
 		<div id="result">
-			<!-- <img src="static/image/gambar-beruang.jpg" alt="">
-								<p id="nama-hewan">Beruang</p>
-								<p id="deskripsi">Deskripsi</p>
-								<p id="detail-deskripsi">Beruang adalah salah satu mamalia darat terbesar yang termasuk dalam keluarga Ursidae. Hewan ini memiliki tubuh yang kokoh, moncong memanjang, telinga kecil dan bulat, serta cakar tajam. Warna bulu beruang bervariasi dari putih (beruang kutub), cokelat, hingga hitam, tergantung spesiesnya. Mereka adalah hewan soliter yang dikenal sebagai pemburu oportunis.</p>
-								<p id="fakta">Fakta</p>
-								<p id="detail-fakta">Ada 8 spesies beruang yang tersebar di dunia, seperti beruang kutub (Ursus maritimus), beruang grizzly (Ursus arctos horribilis), dan panda raksasa (Ailuropoda melanoleuca).
-Beruang kutub adalah perenang ulung dan menghabiskan sebagian besar waktunya di laut.
-Panda memiliki makanan yang hampir eksklusif berupa bambu, sementara spesies lain adalah omnivora.</p>
-								<p id="ukuran">Ukuran</p>
-								<p id="detail-ukuran">Tinggi: 1.2–2.8 meter (berdiri tegak).
-Berat: 27–800 kg tergantung spesies.</p>
-								<p id="ciri-ciri">Ciri-Ciri</p>
-								<p id="detail-ciri-ciri">Beruang memiliki cakar panjang untuk menggali atau menangkap mangsa.
-Lapisan lemak tebal membantu mereka bertahan di cuaca dingin.</p>
-								<p id="sejarah">Sejarah</p>
-								<p id="detail-sejarah">Beruang memiliki hubungan panjang dengan manusia dalam mitologi, cerita rakyat, dan budaya. Dalam mitologi Nordik, beruang adalah simbol keberanian dan perlindungan, sering diasosiasikan dengan dewa Odin. Di Amerika Utara, suku-suku pribumi menganggap beruang sebagai roh penjaga, yang menginspirasi lukisan totem dan kisah spiritual.
-Dalam biologi, nenek moyang beruang modern pertama kali muncul sekitar 20 juta tahun lalu di Eurasia. Panda raksasa, salah satu spesies unik, berpisah dari kelompok beruang utama sekitar 3 juta tahun yang lalu, berkembang sebagai spesies yang sangat bergantung pada bambu.</p>
-								<p id="pola-makan">Pola Makan</p>
-								<p id="detail-pola-makan">Beruang adalah omnivora, dan pola makan mereka bergantung pada spesies dan lokasi:
-
-Beruang grizzly: Ikan (terutama salmon), beri, akar, dan hewan kecil.
-Panda raksasa: Hampir 99% makanannya adalah bambu.
-Beruang kutub: Karnivora, memakan anjing laut dan kadang paus kecil.</p>
-								<p id="habitat">Habitat</p>
-								<p id="detail-habitat">Beruang grizzly hidup di pegunungan, hutan, dan padang rumput Amerika Utara.
-Panda raksasa ditemukan di hutan bambu di pegunungan Tiongkok.
-Beruang kutub tinggal di wilayah Arktik, di es laut dan pantai.</p> -->
-
 		</div>
 
 		<div id="webcamContainer" style="display: none;">
@@ -455,16 +419,6 @@ Beruang kutub tinggal di wilayah Arktik, di es laut dan pantai.</p> -->
 
 
 
-
-
-
-
-
-
-
-
-
-
 		// image
 		document.querySelector('form[action="/upload-image"]').onsubmit = async function (event) {
 			event.preventDefault();
@@ -511,13 +465,7 @@ Beruang kutub tinggal di wilayah Arktik, di es laut dan pantai.</p> -->
 				
 				// Display detected classes
 				if (result.detected_classes && result.detected_classes.length > 0 && (result.output.endsWith(".jpeg") || result.output.endsWith(".png") || result.output.endsWith(".jpg") )) {
-					// const classesHtml = result.detected_classes
-					// 	.map(cls => `<p>Detected Class: ${cls.name} (ID: ${cls.id})</p>`)
-					// 	.join("");
-					// resultDiv.innerHTML += `
-					// 	<h3>Detected Classes:</h3>
-					// 	${classesHtml}
-					// `;
+
 					let description = '';
 					description+=`<p id="heii">Here Are The Details</p>`
 					result.detected_classes.forEach(cls => {
@@ -556,42 +504,48 @@ Beruang kutub tinggal di wilayah Arktik, di es laut dan pantai.</p>
 							`
 							satu = true;
 						}
-						else if(cls.name == "turtle" && dua == false){
+						else if(cls.name == "bird" && dua == false){
 							description+=`
-							<img src="static/image/kura-kura.jpeg" alt="">
-							<p id="nama-hewan">Kura-Kura</p>
+							<img src="static/image/gambar-burung.jpeg" alt="">
+							<p id="nama-hewan">Burung</p>
 							<p id="deskripsi">Deskripsi</p>
-							<p id="detail-deskripsi">Kura-kura adalah reptil yang termasuk dalam ordo Testudines dan terkenal karena memiliki cangkang keras yang melindungi tubuhnya. Mereka adalah hewan berdarah dingin, bergerak lambat, dan hidup di darat. Cangkang kura-kura terdiri dari dua bagian: bagian atas disebut carapace, dan bagian bawah disebut plastron. Kura-kura memiliki kepala kecil, leher panjang, dan kaki yang kuat.</p>
+							<p id="detail-deskripsi">Burung adalah vertebrata berdarah panas yang termasuk dalam kelas Aves. Hewan ini dikenal karena tubuhnya yang ditutupi bulu, memiliki paruh tanpa gigi, serta kemampuan untuk bertelur. Sebagian besar spesies burung dapat terbang, meskipun ada juga yang tidak, seperti burung unta, penguin, dan kasuari. Burung memiliki sistem pernapasan dan kerangka yang dirancang untuk mendukung penerbangan.</p>
 							<p id="fakta">Fakta</p>
-							<p id="detail-fakta">Kura-kura adalah salah satu kelompok reptil tertua, muncul sekitar 220 juta tahun yang lalu.
-Mereka bisa hidup sangat lama; beberapa spesies seperti kura-kura raksasa Galápagos dan Aldabra dapat hidup lebih dari 150 tahun.
-Tidak seperti penyu, kura-kura tidak memiliki kaki berselaput karena mereka sepenuhnya hidup di darat.</p>
+							<p id="detail-fakta">Jumlah Spesies: Terdapat lebih dari 10.000 spesies burung di seluruh dunia.
+Ukuran Bervariasi: Burung terkecil adalah kolibri lebah (Mellisuga helenae), dengan panjang sekitar 5 cm, sedangkan burung terbesar adalah burung unta (Struthio camelus), yang tingginya mencapai 2,7 meter.
+Sistem Pernapasan Efisien: Burung memiliki sistem pernapasan yang lebih efisien daripada mamalia, yang memungkinkan suplai oksigen optimal saat terbang.
+Penglihatan Tajam: Banyak burung memiliki penglihatan yang luar biasa, terutama burung pemangsa seperti elang.</p>
 							<p id="ukuran">Ukuran</p>
-							<p id="detail-ukuran">Ukuran kura-kura sangat bervariasi tergantung spesies.
-Kura-kura raksasa Galápagos (Chelonoidis nigra): Panjang hingga 1.2 meter dan berat lebih dari 250 kg.
-Kura-kura kecil seperti kura-kura Yunani (Testudo graeca): Panjang sekitar 20–30 cm dengan berat 2–3 kg.</p>
+							<p id="detail-ukuran">Terkecil: Kolibri lebah (panjang 5–6 cm, berat 1,6–2 gram).
+Terbesar: Burung unta (tinggi hingga 2,7 meter, berat hingga 160 kg).
+Panjang Rentang Sayap Terpanjang: Albatros pengembara (rentang sayap hingga 3,5 meter).</p>
 							<p id="ciri-ciri">Ciri-Ciri</p>
-							<p id="detail-ciri-ciri">Cangkang: Terbuat dari tulang dan tulang rawan, dan menyatu dengan tulang belakang serta tulang rusuk kura-kura.
-Pernafasan: Meski cangkangnya kaku, kura-kura memiliki otot khusus untuk membantu mereka bernapas.
-Kecepatan: Kura-kura bergerak sangat lambat, dengan kecepatan rata-rata 0.2–0.5 km/jam.</p>
+							<p id="detail-ciri-ciri">Tubuh Berbulu: Seluruh tubuh ditutupi bulu yang berfungsi untuk terbang, menghangatkan tubuh, dan menarik pasangan.
+Paruh Tanpa Gigi: Bentuk paruh bervariasi tergantung pola makan, misalnya paruh tajam untuk burung karnivora dan paruh bengkok untuk pemakan biji.
+Kerangka Ringan: Tulang burung berongga (pneumatik) untuk mengurangi berat badan dan mendukung penerbangan.
+Kaki dan Cakar: Disesuaikan dengan habitatnya, misalnya kaki berselaput untuk berenang atau cakar tajam untuk mencengkeram mangsa.
+Kemampuan Beradaptasi: Beberapa burung dapat bermigrasi ribuan kilometer untuk mencari tempat berkembang biak yang ideal.</p>
 							<p id="sejarah">Sejarah</p>
-							<p id="detail-sejarah">Kura-kura adalah salah satu kelompok reptil paling kuno yang masih hidup hingga kini. Fosil menunjukkan bahwa nenek moyang kura-kura memiliki tubuh yang lebih sederhana dan tidak memiliki cangkang lengkap seperti kura-kura modern. Evolusi cangkang menjadi inovasi adaptif yang melindungi mereka dari predator.
+							<p id="detail-sejarah">Burung berevolusi dari dinosaurus theropoda kecil sekitar 150 juta tahun yang lalu selama periode Jurassic. Fosil pertama yang ditemukan adalah Archaeopteryx, yang menunjukkan adanya transisi antara dinosaurus dan burung modern. Burung mulai berkembang pesat setelah kepunahan dinosaurus non-unggas sekitar 66 juta tahun yang lalu.
 
-Dalam sejarah manusia, kura-kura sering dianggap simbol umur panjang dan kebijaksanaan. Di mitologi Tiongkok, kura-kura melambangkan stabilitas dan keseimbangan, dipercaya sebagai salah satu dari empat makhluk suci. Dalam cerita rakyat beberapa budaya asli Amerika, kura-kura digambarkan membawa dunia di atas cangkangnya ("Pulau Kura-Kura").
+
 
 </p>
 							<p id="pola-makan">Pola Makan</p>
-							<p id="detail-pola-makan">Kura-kura adalah herbivora yang sebagian besar memakan:
+							<p id="detail-pola-makan">Burung adalah hewan omnivora, tetapi jenis makanannya tergantung pada spesiesnya:
 
-Rumput, daun, bunga, buah-buahan, dan tanaman hijau lainnya.
-Beberapa spesies mungkin memakan serangga kecil atau bangkai, tetapi ini jarang terjadi.</p>
+Karnivora: Memakan serangga, mamalia kecil, atau ikan (contoh: elang, burung hantu).
+Herbivora: Memakan biji, buah, dan nektar (contoh: burung pipit, kolibri).
+Omnivora: Kombinasi tumbuhan dan hewan kecil (contoh: burung gagak).
+Pemakan bangkai: Seperti burung hering.</p>
 							<p id="habitat">Habitat</p>
-							<p id="detail-habitat">Kura-kura ditemukan di berbagai habitat darat, seperti:
+							<p id="detail-habitat">Burung dapat ditemukan di hampir semua jenis habitat di dunia:
 
-Padang rumput dan sabana.
-Hutan tropis dan subtropis.
-Daerah semi-gurun dan pegunungan.
-Spesies seperti kura-kura raksasa Galápagos hidup di pulau-pulau terpencil, sedangkan spesies lainnya seperti kura-kura padang pasir (Gopherus agassizii) menghuni gurun di Amerika Utara.</p>
+Hutan Tropis: Menyediakan tempat tinggal bagi banyak spesies, seperti burung cendrawasih.
+Padang Rumput dan Savana: Burung seperti elang dan burung unta sering ditemukan di sini.
+Perairan: Burung air seperti flamingo dan bebek menghuni danau, rawa, atau laut.
+Pegunungan: Burung seperti alap-alap dan elang gunung hidup di dataran tinggi.
+Perkotaan: Banyak burung seperti burung gereja dan merpati yang beradaptasi dengan lingkungan manusia.</p>
 							`
 							dua = true;
 						}
@@ -636,317 +590,247 @@ Zebra juga menjadi bagian penting dalam budaya banyak suku di Afrika, dengan gam
 							tiga = true;
 						}
 
-						else if(cls.name == "warthog" && empat == false){
+						else if(cls.name == "cat" && empat == false){
 							description+=`
-							<img src="static/image/gambar-warthog.jpg" alt="">
-							<p id="nama-hewan">Warthog</p>
+							<img src="static/image/gambar-kucing.jpeg" alt="">
+							<p id="nama-hewan">Kucing</p>
 
 							<p id="deskripsi">Deskripsi</p>
-							<p id="detail-deskripsi">Warthog adalah mamalia yang termasuk dalam keluarga babi liar, Suidae, dan dikenal karena penampilan fisiknya yang unik. Mereka memiliki tubuh kekar dengan kaki pendek, wajah yang lebar, dan dua pasang taring panjang yang mencuat ke depan, yang dikenal sebagai "taring warthog." Taring ini terlihat mirip dengan tungkai babi dan digunakan sebagai alat pertahanan terhadap predator. Kulit mereka kasar dan sering tampak berkerut, dengan warna yang bervariasi dari cokelat ke abu-abu. Warthog memiliki rambut yang jarang di tubuh mereka, tetapi jantan memiliki janggut tebal di sekitar mulut.</p>
+							<p id="detail-deskripsi">Kucing adalah mamalia karnivora kecil yang termasuk dalam famili Felidae dan spesies Felis catus. Kucing dikenal sebagai hewan peliharaan yang populer karena sifatnya yang lucu, anggun, dan penuh kasih sayang. Mereka memiliki kemampuan berburu alami, penglihatan malam yang tajam, serta kepekaan terhadap suara dan gerakan.</p>
 
 							<p id="fakta">Fakta</p>
-							<p id="detail-fakta">Warthog dikenal memiliki kemampuan berlari cepat meskipun tubuh mereka terlihat gemuk dan kekar.
-Mereka memiliki kebiasaan unik yaitu tidur di lubang-lubang atau terowongan yang digali oleh hewan lain seperti meerkat atau rakun.
-Taring warthog jantan lebih besar dan lebih mencolok daripada betina, berfungsi untuk bertarung melawan sesama jantan dalam perebutan wilayah atau betina.</p>
+							<p id="detail-fakta">Domestikasi Lama: Kucing telah didomestikasi selama lebih dari 9.000 tahun.
+Populasi Dunia: Terdapat lebih dari 500 juta kucing peliharaan di seluruh dunia.
+Pola Tidur: Kucing menghabiskan sekitar 12–16 jam per hari untuk tidur.
+Komunikasi Unik: Kucing menggunakan suara (seperti mengeong dan mendengkur), gerakan tubuh, serta ekspresi wajah untuk berkomunikasi dengan manusia dan sesamanya.</p>
 
 							<p id="ukuran">Ukuran</p>
-							<p id="detail-ukuran">Panjang tubuh: 1.2–1.5 meter.
-Tinggi: 75–100 cm di bahu.
-Berat: 50–150 kg, tergantung spesies dan jenis kelamin. Jantan lebih besar daripada betina.</p>
+							<p id="detail-ukuran">Panjang Tubuh: 46–51 cm (tidak termasuk ekor).
+Berat: Rata-rata 4–6 kg, tetapi ada ras yang lebih kecil atau lebih besar.
+Rekor Terbesar: Kucing domestik terpanjang yang tercatat adalah 1,23 meter dari kepala hingga ekor.</p>
 
 							<p id="ciri-ciri">Ciri-Ciri</p>
-							<p id="detail-ciri-ciri">Taring: Taring warthog, yang mencuat keluar dari rahang atas dan bawah, bukan hanya alat pertahanan tetapi juga alat yang digunakan dalam perkelahian antar warthog untuk memperebutkan wilayah atau dominasi dalam kelompok.
-Tidur dalam lubang: Mereka tidak membuat lubang sendiri, tetapi menggunakan lubang yang digali oleh hewan lain untuk bersembunyi dan tidur. Ini adalah taktik bertahan hidup yang memungkinkan mereka untuk melindungi diri dari predator yang lebih besar.</p>
+							<p id="detail-ciri-ciri">Tubuh Lincah: Kucing memiliki tubuh yang fleksibel dengan tulang belakang yang elastis, memungkinkan mereka untuk melompat tinggi atau bergerak dengan cepat.
+Bulu: Bervariasi dalam warna, pola, dan panjang, tergantung pada rasnya.
+Cakar Retraktil: Cakar dapat ditarik ke dalam, memungkinkannya tetap tajam saat digunakan untuk berburu atau memanjat.
+Mata: Kucing memiliki pupil berbentuk elips yang memungkinkan penglihatan tajam di kondisi cahaya rendah.
+Pendengaran Tajam: Kucing dapat mendeteksi frekuensi tinggi yang tidak dapat didengar manusia.
+Kumis Sensitif: Kumis kucing membantu mereka merasakan perubahan kecil di lingkungan, seperti gerakan udara atau benda di sekitarnya.</p>
 
 							<p id="sejarah">Sejarah</p>
-							<p id="detail-sejarah">Warthog adalah hewan yang telah ada sejak ribuan tahun yang lalu, dengan garis keturunan yang berasal dari keluarga babi liar yang lebih luas. Mereka telah menjadi bagian penting dari ekosistem Afrika, di mana mereka memainkan peran dalam pemakanannya, terutama dengan mengendalikan vegetasi. Dalam budaya Afrika, warthog sering digambarkan sebagai simbol keberanian, dengan karakteristik mereka yang berani dan gesit meskipun tubuh mereka cenderung lebih kekar.
-
-Warthog pertama kali diperkenalkan ke dunia Barat pada abad ke-18 oleh para penjelajah dan naturalis yang mengunjungi Afrika. Seiring waktu, mereka menjadi salah satu hewan yang dikenali secara internasional berkat penampilannya yang khas dan popularitas mereka dalam budaya pop, seperti film "The Lion King."</p>
+							<p id="detail-sejarah">Kucing domestik berasal dari kucing liar Afrika (Felis silvestris lybica) yang mulai berinteraksi dengan manusia di sekitar daerah Timur Tengah, terutama selama periode awal pertanian. Kucing dianggap sebagai pemburu alami tikus yang membantu melindungi hasil panen manusia. Selama berabad-abad, kucing berkembang menjadi bagian penting dari rumah tangga manusia di seluruh dunia.</p>
 
 							<p id="pola-makan">Pola Makan</p>
-							<p id="detail-pola-makan">Warthog adalah omnivora, tetapi sebagian besar makanannya berupa tumbuhan. Mereka memakan rumput, akar, umbi, dan buah-buahan. Warthog juga diketahui menggali tanah dengan cakar mereka untuk mencari makanan yang terkubur, seperti akar yang lebih dalam atau sumber air. Terkadang, mereka juga memakan serangga dan telur burung jika tersedia.</p>
+							<p id="detail-pola-makan">Kucing adalah karnivora obligat, yang berarti mereka membutuhkan protein hewani untuk bertahan hidup. Makanan mereka meliputi:
+
+Daging Mentah: Tikus, burung kecil, atau ikan (di alam liar).
+Makanan Olahan: Makanan kucing komersial yang diformulasikan dengan daging, ikan, dan vitamin tambahan.
+Makanan Tambahan: Beberapa kucing menyukai makanan manusia seperti ayam rebus atau ikan, tetapi makanan seperti cokelat, bawang, dan anggur beracun bagi mereka.</p>
 
 							<p id="habitat">Habitat</p>
-							<p id="detail-habitat">Warthog ditemukan di seluruh Afrika sub-Sahara, terutama di padang rumput terbuka, sabana, dan hutan yang tidak terlalu lebat. Mereka lebih suka tinggal di daerah yang memiliki akses mudah ke air, tetapi mereka bisa bertahan di tempat yang lebih kering selama ada cukup makanan. Warthog sering membuat tempat berlindung di lubang bawah tanah atau gua, yang mereka gali atau yang ditinggalkan oleh hewan lain, seperti meerkat atau mongoose.
+							<p id="detail-habitat">Kucing domestik dapat beradaptasi dengan berbagai habitat, baik di lingkungan perkotaan maupun pedesaan.
+
+Rumah: Sebagian besar kucing domestik tinggal di rumah sebagai hewan peliharaan.
+Liar: Kucing liar atau kucing jalanan hidup di lingkungan luar, seperti hutan, taman, atau daerah urban.
+Lingkungan Panas atau Dingin: Beberapa ras, seperti kucing Persia, lebih cocok untuk lingkungan dingin, sementara ras seperti kucing Savannah lebih nyaman di iklim hangat.
 
 </p>
 							`
 							empat = true;
 						}
-						else if(cls.name == "tiger" && lima == false){
+						else if(cls.name == "dog" && lima == false){
 							description+=`
-							<img src="static/image/gambar-tiger.jpg" alt="">
-							<p id="nama-hewan">Harimau</p>
+							<img src="static/image/gambar-anjing.jpeg" alt="">
+							<p id="nama-hewan">Anjing</p>
 
 							<p id="deskripsi">Deskripsi</p>
-							<p id="detail-deskripsi">Harimau (Panthera tigris) adalah kucing besar yang paling terkenal dan salah satu predator terbesar di dunia. Mereka memiliki tubuh kekar, otot kuat, dan kulit berwarna oranye dengan garis-garis hitam yang unik. Setiap harimau memiliki pola garis yang berbeda, yang membuatnya mudah dikenali. Harimau juga memiliki cakar yang besar dan tajam serta gigi taring yang panjang, yang membantunya memburu mangsanya. Mereka dikenal karena kekuatan dan kecakapan berburu yang luar biasa.</p>
+							<p id="detail-deskripsi">Anjing (Canis lupus familiaris) adalah mamalia karnivora yang telah didomestikasi dari serigala abu-abu sekitar 15.000–40.000 tahun yang lalu. Anjing adalah salah satu hewan peliharaan paling setia dan serbaguna di dunia, dengan kemampuan untuk bekerja sebagai penjaga, pemburu, anjing terapi, atau hanya sebagai teman setia manusia.</p>
 
 							<p id="fakta">Fakta</p>
-							<p id="detail-fakta">Harimau adalah kucing besar yang paling kuat, dengan kekuatan fisik yang memungkinkan mereka membunuh mangsa yang jauh lebih besar dari tubuh mereka sendiri, seperti banteng atau rusa besar.
-Harimau adalah hewan soliter, yang berarti mereka biasanya hidup dan berburu sendirian, berbeda dengan beberapa jenis kucing besar lainnya yang hidup dalam kelompok.
-Mereka memiliki indra penciuman, pendengaran, dan penglihatan malam yang sangat tajam, yang membantu mereka berburu di malam hari.</p>
+							<p id="detail-fakta">Variasi Ras: Ada lebih dari 340 ras anjing yang diakui secara resmi, mulai dari Chihuahua kecil hingga anjing ras besar seperti Great Dane.
+Indera Penciuman Tajam: Indera penciuman anjing 10.000–100.000 kali lebih tajam daripada manusia.
+Keturunan Langsung Serigala: DNA anjing berbagi 99,9% kemiripan dengan serigala abu-abu.
+Beragam Peran: Anjing dapat dilatih untuk mendeteksi bom, membantu penyandang disabilitas, menggiring ternak, atau bahkan mendeteksi penyakit seperti kanker.</p>
 
 							<p id="ukuran">Ukuran</p>
-							<p id="detail-ukuran">Panjang tubuh: 2.5–3 meter, tergantung spesies.
-Tinggi di bahu: 90 cm hingga 1.1 meter.
-Berat: 100–300 kg, tergantung spesies dan jenis kelamin. Harimau jantan biasanya lebih besar daripada betina.</p>
+							<p id="detail-ukuran">Terkecil: Chihuahua, dengan berat sekitar 1,5–3 kg dan tinggi sekitar 15–23 cm.
+Terbesar: Great Dane dan Mastiff, yang tingginya dapat mencapai lebih dari 1 meter dan berat hingga 90 kg.</p>
 
 							<p id="ciri-ciri">Ciri-Ciri</p>
-							<p id="detail-ciri-ciri">Garis-garis: Setiap harimau memiliki pola garis yang unik pada kulitnya, mirip dengan sidik jari pada manusia. Ini membantu mereka berkamuflase di hutan dan semak-semak, serta memberikan identifikasi individu.
-Kemampuan berenang: Berbeda dengan banyak kucing besar lainnya, harimau adalah perenang yang sangat baik dan sering terlihat berenang di sungai atau danau untuk berburu atau berpindah tempat.
-Suara: Harimau dapat mengeluarkan suara yang sangat keras, seperti auman yang dapat terdengar hingga 3 km jauhnya. Auman ini digunakan untuk menandai wilayah dan untuk menarik pasangan.</p>
+							<p id="detail-ciri-ciri">Tubuh Berbulu: Warna dan tekstur bulu bervariasi tergantung pada ras, seperti bulu panjang (Golden Retriever) atau bulu pendek (Dalmatian).
+Hidung Sensitif: Hidung anjing memiliki ribuan reseptor penciuman yang memungkinkannya mendeteksi bau dengan akurasi tinggi.
+Gigi Karnivora: Gigi tajam dirancang untuk merobek daging, meskipun banyak anjing domestik juga makan makanan yang diformulasikan khusus.
+Kaki yang Kuat: Dirancang untuk kecepatan, ketahanan, dan kelincahan, memungkinkan mereka berlari cepat atau menggali.
+Pendengaran Tajam: Anjing dapat mendengar frekuensi tinggi hingga 65.000 Hz, jauh lebih tinggi dibandingkan manusia.</p>
 
 							<p id="sejarah">Sejarah</p>
-							<p id="detail-sejarah">Harimau adalah salah satu hewan yang sudah ada sejak ribuan tahun lalu, dengan catatan fosil yang menunjukkan bahwa nenek moyang mereka pertama kali muncul sekitar 2 juta tahun yang lalu di Asia. Sepanjang sejarah, harimau telah menjadi simbol kekuatan dan keberanian dalam banyak budaya, terutama di Asia, di mana mereka dianggap sebagai makhluk suci dan dihormati dalam berbagai mitologi.
-Di Tiongkok kuno, harimau dianggap sebagai pelindung yang dapat mengusir roh jahat dan memberikan perlindungan. Dalam budaya India, harimau sering diasosiasikan dengan dewa dan dewi, seperti Dewa Shiva yang sering digambarkan menunggangi harimau.
-
-Namun, meskipun harimau sangat dihormati dalam budaya, mereka juga menghadapi ancaman serius akibat perburuan liar untuk bulu dan bagian tubuh lainnya yang digunakan dalam obat tradisional, serta hilangnya habitat. Dalam beberapa dekade terakhir, upaya konservasi terus dilakukan untuk melindungi harimau dari kepunahan.</p>
+							<p id="detail-sejarah"Domestikasi anjing dimulai ketika serigala liar mulai berinteraksi dengan manusia, sering kali mencari sisa makanan di sekitar tempat tinggal manusia purba. Secara bertahap, manusia mulai melatih dan membiakkan serigala yang lebih jinak, yang kemudian berkembang menjadi berbagai ras anjing dengan karakteristik khusus.</p>
 
 							<p id="pola-makan">Pola Makan</p>
-							<p id="detail-pola-makan">Harimau adalah karnivora obligat, yang berarti mereka hanya makan daging. Mereka berburu hewan besar seperti rusa, babi hutan, banteng, dan kadang-kadang bahkan hewan besar seperti sapi dan gajah muda. Harimau juga dikenal memangsa hewan kecil seperti kelinci dan unggas jika makanan besar sulit didapat.
-Harimau adalah pemburu penyergap, yang berarti mereka lebih suka menyerang dengan cara mendekati mangsanya secara diam-diam dan kemudian menyerang dengan kekuatan dan kecepatan dalam jarak dekat. Setelah menangkap mangsa, mereka akan makan perlahan dan tidak membiarkan predator lain mendekat.</p>
+							<p id="detail-pola-makan">Anjing adalah omnivora, meskipun kebutuhan utamanya berasal dari protein hewani. Makanan mereka meliputi:
+
+Daging: Ayam, sapi, atau ikan.
+Makanan Olahan: Makanan anjing komersial yang dirancang untuk memenuhi kebutuhan nutrisi mereka.
+Tambahan Sayuran: Wortel, labu, dan kentang manis sering digunakan sebagai tambahan diet.
+Pantangan: Makanan seperti cokelat, bawang, anggur, dan alkohol beracun bagi anjing.</p>
 
 							<p id="habitat">Habitat</p>
-							<p id="detail-habitat">Harimau ditemukan di berbagai habitat, termasuk hutan tropis, sabana, dan daerah pegunungan. Mereka paling sering ditemukan di Asia, dengan populasi utama yang tersebar di India, Siberia, Indonesia, dan China. Setiap subspesies harimau memiliki preferensi habitat yang sedikit berbeda:
+							<p id="detail-habitat">Anjing adalah hewan yang sangat adaptif dan dapat hidup di berbagai lingkungan:
 
-Harimau Bengal (Panthera tigris tigris): Ditemukan di India, Bangladesh, Bhutan, dan Nepal.
-Harimau Siberia (Panthera tigris altaica): Juga dikenal sebagai harimau Amur, ditemukan di Siberia, Rusia bagian timur, dan beberapa bagian China.
-Harimau Sumatera (Panthera tigris sumatrae): Ditemukan di pulau Sumatera, Indonesia.
-Harimau Malaya (Panthera tigris jacksoni): Ditemukan di Semenanjung Malaya.
-Habitat mereka biasanya terdiri dari hutan lebat dengan banyak tempat persembunyian dan dekat dengan sumber air seperti sungai atau danau. Harimau membutuhkan wilayah yang luas untuk berburu dan mencari makanan.</p>
+Perkotaan: Tinggal bersama keluarga di apartemen atau rumah.
+Pedesaan: Sering digunakan sebagai anjing penjaga atau pekerja.
+Lingkungan Ekstrem: Anjing seperti Husky Siberia hidup di daerah bersalju, sementara Basenji berkembang di lingkungan panas Afrika.</p>
 							`
 							lima = true;
 						}
-						else if(cls.name == "rhino" && enam == false){
+						else if(cls.name == "horse" && enam == false){
 							description+=`
-							<img src="static/image/gambar-badak.jpeg" alt="">
-							<p id="nama-hewan">Badak</p>
+							<img src="static/image/gambar-kuda.jpeg" alt="">
+							<p id="nama-hewan">Kuda</p>
 
 							<p id="deskripsi">Deskripsi</p>
-							<p id="detail-deskripsi">Badak adalah mamalia besar yang dikenal dengan tubuh kekarnya dan dua tanduk besar yang terletak di hidung mereka. Badak memiliki kulit tebal, yang sebagian besar terdiri dari lapisan keratin yang sangat keras. Mereka memiliki tubuh yang besar dan kekar, serta telinga yang tegak dan mata kecil, tetapi indera penciuman mereka sangat tajam. Ada lima spesies badak yang masih ada saat ini, dan mereka ditemukan di Afrika dan Asia.
-
-Badak memiliki dua jenis tanduk yang berbeda-beda menurut spesiesnya. Tanduk pertama terletak di bagian depan hidung dan lebih besar, sementara tanduk kedua (jika ada) lebih kecil dan terletak di belakang tanduk pertama.</p>
+							<p id="detail-deskripsi">Kuda (Equus ferus caballus) adalah mamalia herbivora berkuku satu yang dikenal karena kekuatan, kecepatan, dan kegunaannya dalam berbagai aktivitas manusia. Kuda telah didomestikasi selama lebih dari 5.000 tahun dan memainkan peran penting dalam transportasi, pertanian, perang, olahraga, dan hiburan.</p>
 
 							<p id="fakta">Fakta</p>
-							<p id="detail-fakta">Badak memiliki penglihatan yang buruk, tetapi mereka memiliki indra penciuman yang sangat tajam dan dapat mendeteksi bau dari jarak jauh.
-Mereka memiliki kulit yang sangat tebal, hampir 5 cm, yang memberikan perlindungan terhadap predator.
-Badak adalah hewan soliter, meskipun beberapa spesies mungkin membentuk kelompok kecil.</p>
+							<p id="detail-fakta">Indra Tajam: Kuda memiliki penglihatan periferal yang luas, hampir 360 derajat, tetapi mereka memiliki titik buta di depan dan di belakang tubuh mereka.
+Beragam Jenis: Ada lebih dari 400 ras kuda, dari kuda poni kecil hingga ras kuda besar seperti Shire.
+Kekuatan Kaki: Tendangan kuda dapat menghasilkan kekuatan besar yang berbahaya jika terkena langsung.
+Hewan Sosial: Kuda hidup dalam kawanan dan memiliki hierarki sosial yang ketat.</p>
 
 							<p id="ukuran">Ukuran</p>
-							<p id="detail-ukuran">Panjang tubuh: 3–4 meter (tergantung spesies).
-Tinggi di bahu: 1.4–1.8 meter.
-Berat: 800–3.000 kg, tergantung spesiesnya. Badak putih, misalnya, bisa mencapai berat lebih dari 2.300 kg, sementara badak Sumatera lebih kecil, sekitar 800–1.000 kg.
+							<p id="detail-ukuran">Ras Terkecil: Kuda Falabella, dengan tinggi rata-rata 76 cm.
+Ras Terbesar: Kuda Shire, yang tingginya bisa mencapai 1,8 meter di pundak dan berat lebih dari 1 ton.
 </p>
 
 							<p id="ciri-ciri">Ciri-Ciri</p>
-							<p id="detail-ciri-ciri">Tanduk: Badak memiliki dua tanduk yang terbuat dari keratin, sama seperti kuku manusia, dan tidak terbuat dari tulang. Tanduk ini digunakan untuk bertahan dari predator atau bertarung dengan badak lain dalam pertarungan teritorial.
-Kulit Tebal: Kulit badak sangat tebal dan berkerut, memberikan perlindungan dari gigitan predator dan serangga. Badak juga sering mandi lumpur untuk melindungi kulit mereka dari sinar matahari dan parasit.
-Indra Penciuman Tajam: Meskipun penglihatannya buruk, badak memiliki penciuman yang sangat tajam dan dapat mendeteksi bau dari jarak jauh.
+							<p id="detail-ciri-ciri">Tubuh Berotot: Tubuh kuda dirancang untuk kecepatan dan daya tahan.
+Kuku Keras: Kuku kuda adalah struktur keratin yang mendukung berat badan dan melindungi kaki.
+Ekor dan Surai: Digunakan untuk mengusir serangga dan melambangkan keindahan kuda.
+Gigi: Kuda memiliki 36–40 gigi, digunakan untuk memotong rumput dan menggiling makanan.
+Detak Jantung: Detak jantung kuda normal berkisar antara 28–40 kali per menit dalam keadaan istirahat.
 </p>
 
 							<p id="sejarah">Sejarah</p>
-							<p id="detail-sejarah">Badak pertama kali muncul sekitar 50 juta tahun yang lalu, dengan fosil-fosil menunjukkan bahwa nenek moyang mereka lebih kecil dan lebih ringan. Badak modern telah berkembang menjadi hewan besar dengan tubuh yang kokoh dan tanduk yang kuat.
-Secara historis, badak sering berbenturan dengan manusia, baik karena perburuan untuk tanduknya yang berharga, maupun karena kehilangan habitat akibat pertanian dan pembangunan. Beberapa spesies badak, seperti badak Jawa dan badak Sumatera, kini terancam punah, dengan jumlah populasi yang sangat kecil.
+							<p id="detail-sejarah">Kuda modern berevolusi dari leluhur kecil seperti Hyracotherium, yang hidup sekitar 50 juta tahun yang lalu. Domestikasi kuda pertama kali terjadi di padang stepa Asia Tengah sekitar 3.500 SM, dan sejak itu mereka menyebar ke seluruh dunia, memainkan peran penting dalam budaya dan peradaban manusia.
 
-Pada abad ke-19 dan awal abad ke-20, perburuan badak mencapai titik puncaknya, dan banyak populasi badak yang mulai menurun drastis. Badak juga menjadi simbol kekuatan dan kegagahan dalam banyak budaya, tetapi pada saat yang sama menjadi sasaran perdagangan ilegal untuk tanduknya.
+
 
 </p>
 
 							<p id="pola-makan">Pola Makan</p>
-							<p id="detail-pola-makan">Badak adalah herbivora, yang berarti mereka memakan tumbuhan. Pola makan mereka tergantung pada spesies dan habitat tempat mereka tinggal.
+							<p id="detail-pola-makan">Kuda adalah herbivora, dengan pola makan utama berupa:
 
-Badak Putih (Ceratotherium simum): Memakan rumput, karena mereka lebih suka padang rumput terbuka dan sabana.
-Badak Hitam (Diceros bicornis): Mengonsumsi semak-semak, daun, dan buah-buahan.
-Badak India (Rhinoceros unicornis): Biasanya memakan rumput, tanaman herba, dan semak-semak.
-Badak Sumatera (Dicerorhinus sumatrensis) dan Badak Jawa (Rhinoceros sondaicus): Memakan daun, buah-buahan, dan batang tanaman.
-Badak memiliki cara makan yang khas, yakni mereka sering menggunakan bibir mereka yang kuat dan fleksibel untuk merobek rumput atau dedaunan.</p>
+Rumput: Sumber makanan utama di habitat alami.
+Jerami: Sering diberikan sebagai makanan tambahan.
+Gandum atau Oat: Sebagai sumber energi untuk kuda pekerja atau kuda balap.
+Air: Kuda membutuhkan sekitar 25–50 liter air per hari, tergantung pada ukuran dan aktivitasnya.</p>
 
 							<p id="habitat">Habitat</p>
-							<p id="detail-habitat">Badak dapat ditemukan di berbagai habitat, tergantung pada spesiesnya:
+							<p id="detail-habitat">Kuda dapat beradaptasi dengan berbagai lingkungan, termasuk:
 
-Badak Putih: Ditemukan di padang rumput terbuka dan sabana di Afrika bagian selatan dan timur.
-Badak Hitam: Ditemukan di padang rumput dan hutan semak di Afrika bagian selatan dan timur.
-Badak India: Biasanya ditemukan di hutan dataran rendah dan daerah basah di India dan Nepal.
-Badak Sumatera: Ditemukan di hutan tropis Sumatera, Indonesia.
-Badak Jawa: Saat ini hanya ditemukan di Taman Nasional Ujung Kulon di Jawa, Indonesia, dan habitatnya terbatas pada daerah rawa dan hutan dataran rendah.
-Habitat mereka sering kali dekat dengan sumber air, seperti sungai atau danau, karena badak sangat membutuhkan air untuk minum dan mandi.</p>
+Padang Rumput: Habitat alami tempat mereka mencari makan dan hidup dalam kawanan.
+Peternakan: Tempat tinggal utama kuda domestik, sering kali dilengkapi dengan kandang dan lapangan terbuka.
+Pegunungan: Beberapa ras, seperti kuda Mongolia, hidup di dataran tinggi.
+</p>
 							`
 							enam = true;
 						}
-						else if(cls.name == "panda" && tujuh == false){
+						else if(cls.name == "sheep" && tujuh == false){
 							description+=`
-								<img src="static/image/gambar-panda.jpg" alt="">
-							<p id="nama-hewan">Panda</p>
+								<img src="static/image/gambar-domba.jpeg" alt="">
+							<p id="nama-hewan">Domba</p>
 
 							<p id="deskripsi">Deskripsi</p>
-							<p id="detail-deskripsi">Panda raksasa (Ailuropoda melanoleuca) adalah mamalia besar yang terkenal karena penampilannya yang unik dengan bulu hitam-putih. Mereka memiliki tubuh besar dan gemuk, dengan wajah bulat yang dihiasi dengan lingkaran hitam di sekitar mata, telinga hitam, dan tubuh yang sebagian besar berwarna putih dengan lengan, kaki, dan bahu yang berwarna hitam. Pandanya memiliki cakar besar yang kuat yang membantu mereka memanjat pohon dan memegang batang bambu saat makan.</p>
+							<p id="detail-deskripsi">Domba (Ovis aries) adalah mamalia herbivora yang termasuk dalam keluarga Bovidae, yang terkenal karena kemampuannya menghasilkan wol, susu, dan daging. Domba telah didomestikasi sejak sekitar 10.000 tahun yang lalu dan merupakan salah satu hewan ternak utama di dunia, yang banyak dipelihara untuk keperluan pertanian dan industri tekstil.
+
+</p>
 
 							<p id="fakta">Fakta</p>
-							<p id="detail-fakta">Panda memiliki jari tambahan pada tangan mereka, yang berfungsi untuk membantu memegang bambu saat makan. Jari ini bukan jari kelima sejati, tetapi merupakan tulang pergelangan tangan yang dimodifikasi.
-Meskipun termasuk dalam keluarga beruang, panda lebih suka menghabiskan waktu mereka di pohon dan sering tidur di sana.
-Panda memiliki perilaku yang tenang dan cenderung lebih menyendiri. Mereka menghabiskan sebagian besar waktu mereka untuk makan atau tidur.</p>
+							<p id="detail-fakta">Wol: Domba dikenal karena menghasilkan wol, bahan tekstil alami yang digunakan untuk membuat pakaian dan selimut.
+Insting Kawanan: Domba adalah hewan yang sangat sosial dan memiliki insting kawanan yang kuat. Mereka cenderung merasa aman dalam kelompok.
+Pemeliharaan yang Luas: Domba ditemukan hampir di seluruh dunia, terutama di daerah yang memiliki iklim sedang.
+Penyesuaian Lingkungan: Ada banyak ras domba yang dapat bertahan di berbagai kondisi, mulai dari daerah pegunungan hingga daerah padang rumput.</p>
 
 							<p id="ukuran">Ukuran</p>
-							<p id="detail-ukuran">Panjang tubuh: 1.2–1.8 meter.
-Tinggi di bahu: 60–90 cm.
-Berat: 70–160 kg. Jantan lebih besar daripada betina.</p>
+							<p id="detail-ukuran">Tinggi: Rata-rata domba dewasa memiliki tinggi antara 60–100 cm di bahu, tergantung pada ras.
+Berat: Berat domba bervariasi antara 45–160 kg, dengan domba jantan biasanya lebih besar daripada betina.</p>
 
 							<p id="ciri-ciri">Ciri-Ciri</p>
-							<p id="detail-ciri-ciri">Tangan tambahan: Panda memiliki "jari kelima" yang membantu mereka memegang bambu dengan lebih mudah. Ini adalah modifikasi tulang pergelangan tangan yang memungkinkan mereka untuk menggenggam bambu dengan lebih kuat.
-Pola hitam-putih: Warna bulu panda yang kontras tidak hanya membuat mereka mudah dikenali, tetapi juga dapat berfungsi sebagai kamuflase di hutan bambu. Warna hitam di sekitar mata mereka juga dapat membantu mengurangi silau dari sinar matahari.
-Tidur dan makan: Panda menghabiskan sebagian besar waktu mereka untuk makan bambu dan tidur. Mereka tidur hingga 12 jam sehari, dan bisa makan hingga 38 kg bambu per hari untuk memenuhi kebutuhan energi mereka.</p>
+							<p id="detail-ciri-ciri">Bulu/Wol: Ciri utama domba adalah bulunya yang tebal dan lembut, yang dikenal sebagai wol. Wol ini berguna untuk melindungi mereka dari cuaca dingin.
+Tanduk: Beberapa ras domba memiliki tanduk yang melingkar, terutama domba jantan. Namun, tidak semua ras domba memiliki tanduk.
+Kaki: Domba memiliki kaki yang pendek dan kuat, dilengkapi dengan kuku yang memudahkan mereka bergerak di medan berbukit.
+Mulut: Mulut domba dilengkapi dengan gigi seri yang tajam di depan dan gigi geraham yang besar untuk mengunyah tumbuh-tumbuhan kasar.</p>
 
 							<p id="sejarah">Sejarah</p>
-							<p id="detail-sejarah">Panda raksasa telah ada selama lebih dari 2 juta tahun, dengan fosil yang menunjukkan bahwa mereka dulunya lebih tersebar luas di Asia. Namun, dengan berjalannya waktu, mereka menjadi terisolasi di daerah pegunungan Cina karena perubahan iklim dan hilangnya habitat mereka.
-
-Panda mulai dikenal di dunia luar pada abad ke-19, setelah penemuan pertama oleh seorang peneliti Prancis bernama Armand David pada tahun 1869. Sejak itu, panda menjadi simbol konservasi alam, terutama setelah menjadi ikon global dalam upaya perlindungan satwa liar. Pandas mulai diperkenalkan ke kebun binatang di luar Cina pada awal abad ke-20, dengan salah satu panda pertama yang dibawa ke luar negeri adalah panda bernama "Ling-Ling" yang dibawa ke Amerika Serikat pada tahun 1972.
-
-Panda raksasa saat ini terancam punah, dan upaya konservasi terus dilakukan untuk melindungi mereka. Meskipun sebelumnya dianggap sebagai hewan yang sulit untuk berkembang biak dalam penangkaran, teknologi dan pemahaman yang lebih baik tentang kebutuhan mereka telah membantu meningkatkan angka kelahiran panda di kebun binatang.</p>
+							<p id="detail-sejarah">Domba domestik berasal dari domba liar yang dikenal sebagai Ovis orientalis, yang berasal dari wilayah Timur Tengah sekitar 10.000 tahun yang lalu. Proses domestikasi ini memungkinkan manusia untuk memanfaatkan domba sebagai sumber makanan, pakaian (wool), dan tenaga kerja. Seiring waktu, manusia mulai membiakkan domba untuk mendapatkan karakteristik tertentu, seperti kualitas wol yang lebih baik atau pertumbuhan daging yang lebih cepat.</p>
 
 							<p id="pola-makan">Pola Makan</p>
-							<p id="detail-pola-makan">Panda raksasa adalah herbivora, dan sekitar 99% dari pola makan mereka terdiri dari bambu. Mereka memakan berbagai jenis bambu, mulai dari daun, batang, hingga akar bambu. Panda dapat menghabiskan hingga 12 jam sehari untuk makan bambu, karena kandungan nutrisi bambu sangat rendah dan mereka perlu makan dalam jumlah besar untuk memenuhi kebutuhan energi mereka. Meskipun mereka memiliki sistem pencernaan karnivora, yang lebih mirip dengan beruang, panda memiliki pola makan yang hampir sepenuhnya berbasis tanaman.
+							<p id="detail-pola-makan">Domba adalah herbivora dan memakan berbagai jenis tanaman:
 
-Pada beberapa kesempatan, panda juga bisa makan buah, telur, atau kadang-kadang mamalia kecil jika mereka merasa perlu variasi dalam diet mereka, meskipun ini jarang terjadi.</p>
+Rumput: Makanan utama domba adalah rumput dan tanaman herba.
+Dedaunan: Domba juga dapat mengonsumsi dedaunan dan tanaman kecil lainnya.
+Pakan Tambahan: Dalam pengelolaan peternakan, domba juga diberi pakan tambahan berupa jerami atau biji-bijian seperti gandum dan jagung, tergantung pada kebutuhan nutrisi mereka.</p>
 
 							<p id="habitat">Habitat</p>
-							<p id="detail-habitat">Panda raksasa hidup di daerah pegunungan di Cina, terutama di provinsi Sichuan, Shaanxi, dan Gansu. Mereka lebih suka tinggal di hutan bambu yang lembap dan dingin, di mana bambu tumbuh subur. Habitat mereka terletak di ketinggian antara 1.200 hingga 3.100 meter di atas permukaan laut. Hutan bambu ini menyediakan makanan utama mereka, serta tempat berlindung yang aman dari predator dan gangguan lainnya.
+							<p id="detail-habitat">Domba dapat hidup di berbagai habitat:
 
-Namun, karena deforestasi dan hilangnya habitat alami mereka, panda terpaksa hidup di area yang lebih terbatas, membuat populasi mereka semakin terisolasi.</p>
+Padang Rumput: Habitat alami domba adalah padang rumput terbuka, di mana mereka dapat makan rumput sepanjang hari.
+Pegunungan: Beberapa ras domba, seperti domba Merino, dapat bertahan hidup di daerah berbukit dan pegunungan dengan kondisi cuaca yang lebih dingin.
+Peternakan: Domba domestik biasanya dipelihara di peternakan atau ranah yang dijaga dan dikelola oleh manusia untuk produksi wol, susu, dan daging.</p>
 
 							`
 							tujuh = true;
 						}
-						else if(cls.name=="leopard" && delapan == false){
+						else if(cls.name=="cow" && delapan == false){
 							delapan = true;
 							description+=`
-							<img src="static/image/gambar-leopard.jpg" alt="">
-							<p id="nama-hewan">Macan Tutul</p>
+							<img src="static/image/gambar-sapi.jpeg" alt="">
+							<p id="nama-hewan">Sapi</p>
 
 							<p id="deskripsi">Deskripsi</p>
-							<p id="detail-deskripsi">Macan tutul (Panthera pardus) adalah kucing besar yang dikenal dengan bulunya yang memiliki pola bercak-bercak hitam di latar belakang keemasan atau kekuningan. Bercak-bercak ini membentuk pola yang berbeda pada setiap individu, memberikan ciri khas yang unik bagi macan tutul. Mereka memiliki tubuh ramping dan otot yang kuat, serta ekor panjang yang memberikan keseimbangan saat bergerak di atas pohon atau berburu. Macan tutul merupakan salah satu predator yang sangat cerdik dan dapat menyesuaikan diri dengan berbagai jenis habitat.</p>
+							<p id="detail-deskripsi">Sapi (Bos taurus) adalah mamalia herbivora yang termasuk dalam keluarga Bovidae dan merupakan salah satu hewan ternak paling penting di dunia. Sapi telah didomestikasi selama lebih dari 10.000 tahun dan telah menjadi sumber utama daging, susu, kulit, dan tenaga bagi manusia. Mereka juga berperan dalam pertanian, seperti menarik alat berat atau membajak tanah.
+
+</p>
 
 							<p id="fakta">Fakta</p>
-							<p id="detail-fakta">Macan tutul adalah ahli memanjat pohon. Mereka sering membawa mangsa mereka ke atas pohon untuk menghindari predator lain seperti singa atau hyena.
-Mereka dikenal karena kemampuan beradaptasi yang luar biasa dengan berbagai habitat, mulai dari hutan tropis hingga padang rumput dan daerah pegunungan.
-Macan tutul memiliki kemampuan berburu yang sangat baik pada malam hari dan cenderung menjadi pemburu soliter.</p>
+							<p id="detail-fakta">Jumlah Populasi: Sapi adalah salah satu hewan ternak yang paling banyak di dunia, dengan populasi lebih dari 1,5 miliar ekor.
+Sumber Daya Alam: Selain produk yang dihasilkan seperti daging dan susu, sapi juga menghasilkan pupuk organik melalui kotorannya yang berguna dalam pertanian.
+Kemampuan Menyesuaikan Diri: Sapi dapat hidup di berbagai iklim, mulai dari daerah dingin hingga tropis, dengan beberapa ras yang lebih tahan terhadap panas atau dingin.
+Panjang Hidup: Rata-rata usia sapi bisa mencapai 15-20 tahun, meskipun banyak yang disembelih lebih awal untuk produksi daging atau susu.</p>
 
 							<p id="ukuran">Ukuran</p>
-							<p id="detail-ukuran">Panjang tubuh (tanpa ekor): 1.2–1.9 meter.
-Tinggi di bahu: 60–70 cm.
-Berat: 30–90 kg, tergantung pada jenis kelamin dan wilayah tempat tinggal. Macan tutul jantan biasanya lebih besar dari betina.</p>
+							<p id="detail-ukuran">Tinggi: Sapi dewasa biasanya memiliki tinggi sekitar 1,4–1,8 meter di bahu, tergantung pada ras.
+Berat: Berat sapi dewasa bisa bervariasi antara 450 kg hingga 1.500 kg. Ras sapi besar seperti Holstein dapat mencapai berat lebih dari 900 kg, sementara sapi kecil seperti Dexter lebih ringan.
+</p>
 
 							<p id="ciri-ciri">Ciri-Ciri</p>
-							<p id="detail-ciri-ciri">Bercak-bercak pada tubuh: Pola bercak hitam pada tubuh macan tutul membantu mereka berkamuflase di habitat alami mereka, seperti hutan dan semak-semak.
-Kemampuan memanjat pohon: Salah satu ciri khas macan tutul adalah kemampuan mereka untuk memanjat pohon dengan sangat gesit. Mereka menggunakan kemampuan ini untuk membawa mangsa ke atas pohon untuk menghindari predator lain dan menjaga makanan mereka tetap aman.
-Kemampuan berburu malam: Macan tutul adalah pemburu malam yang sangat terampil, dengan penglihatan malam yang tajam. Mereka menggunakan keunggulan ini untuk berburu mangsa yang lebih aktif pada malam hari.</p>
+							<p id="detail-ciri-ciri">Tubuh Berotot: Sapi memiliki tubuh besar dengan otot yang kuat untuk mendukung pekerjaan berat, seperti menarik kereta atau membajak.
+Kuku Terbelah: Seperti hewan pemamah biak lainnya, sapi memiliki kuku terbelah yang membantu mereka bergerak di berbagai medan.
+Mulut: Sapi memiliki gigi seri di bagian depan mulut untuk memotong rumput dan gigi geraham untuk menggiling makanan.
+Ekor dan Kulit: Ekor sapi panjang dan sering digunakan untuk mengusir serangga. Kulit sapi bisa berwarna putih, hitam, cokelat, atau kombinasi dari berbagai warna tergantung pada rasnya.</p>
 
 							<p id="sejarah">Sejarah</p>
-							<p id="detail-sejarah">Macan tutul adalah salah satu kucing besar yang paling sukses secara evolusi, dengan sejarah yang panjang yang mencakup hampir 2 juta tahun. Fosil macan tutul menunjukkan bahwa mereka telah menyebar ke berbagai wilayah yang lebih luas di masa lalu, tetapi seiring berjalannya waktu, mereka mulai terisolasi di berbagai tempat di seluruh dunia. Macan tutul pertama kali ditemukan di daerah Afrika dan Asia, dan seiring dengan perkembangan zaman, mereka beradaptasi dengan sangat baik di berbagai jenis habitat.
-
-Secara historis, macan tutul telah dihormati sebagai simbol kekuatan dan kelicikan dalam banyak budaya, terutama di Afrika dan Asia. Di beberapa budaya, macan tutul dianggap sebagai hewan pembawa keberuntungan atau simbol status.
-
-Macan tutul juga menghadapi perburuan dan hilangnya habitat akibat aktivitas manusia, seperti pertanian, perladangan, dan urbanisasi. Namun, mereka masih dianggap sebagai spesies yang cukup berhasil beradaptasi dan memiliki populasi yang relatif stabil meskipun menghadapi ancaman tersebut.</p>
+							<p id="detail-sejarah">Sapi domestik berasal dari auroch, spesies sapi liar yang dulu mendiami Eurasia. Proses domestikasi sapi pertama kali terjadi sekitar 10.000 tahun yang lalu di wilayah Timur Tengah. Selama ribuan tahun, sapi dibudidayakan untuk memenuhi kebutuhan manusia akan daging, susu, dan tenaga kerja, serta untuk keperluan keagamaan dan budaya.</p>
 
 							<p id="pola-makan">Pola Makan</p>
-							<p id="detail-pola-makan">Macan tutul adalah karnivora obligat, yang berarti mereka memakan daging. Mereka berburu berbagai macam mangsa, mulai dari mamalia kecil hingga besar, seperti rusa, kijang, babi hutan, dan primata. Macan tutul memiliki kemampuan berburu yang sangat baik, dengan teknik berburu penyergapan yang efektif.
+							<p id="detail-pola-makan">Sapi adalah herbivora yang memamah biak, yang berarti mereka makan tanaman dan mencerna makanan dalam dua tahap:
 
-Mereka biasanya berburu sendirian dan sangat teritorial. Macan tutul juga dikenal karena kebiasaan mereka membawa mangsa ke atas pohon. Ini membantu mereka menghindari kompetisi dengan predator lain seperti singa atau hyena, yang tidak dapat memanjat pohon. Dengan cara ini, mereka dapat menikmati makan tanpa gangguan.</p>
+Rumput: Rumput adalah makanan utama sapi, terutama di padang rumput.
+Tanaman Hijau: Selain rumput, sapi juga makan dedaunan, tanaman liar, dan jerami.
+Pakan Tambahan: Dalam pengelolaan peternakan, sapi sering diberi pakan tambahan berupa jagung, gandum, atau konsentrat untuk meningkatkan produksi susu atau daging.
+Air: Sapi membutuhkan banyak air untuk pencernaan dan produksi susu, dengan kebutuhan air sekitar 30-50 liter per hari.</p>
 
 							<p id="habitat">Habitat</p>
-							<p id="detail-habitat">Macan tutul dapat ditemukan di berbagai habitat di seluruh Afrika sub-Sahara, serta di beberapa bagian Asia, termasuk India, Sri Lanka, Bangladesh, Nepal, dan China bagian selatan. Mereka bisa tinggal di berbagai jenis lingkungan, mulai dari hutan tropis, sabana, hingga pegunungan berbatu. Macan tutul sangat fleksibel dalam hal habitat dan mampu bertahan hidup di lingkungan yang keras.
+							<p id="detail-habitat">Sapi biasanya hidup di:
 
-Mereka lebih suka wilayah yang memiliki banyak tempat persembunyian seperti pohon besar, semak-semak, atau bebatuan. Macan tutul juga lebih suka berada di daerah yang dekat dengan sumber air, meskipun mereka juga bisa hidup di daerah yang lebih kering jika perlu.
+Padang Rumput: Habitat alami mereka adalah padang rumput terbuka, tempat mereka menggembala rumput sepanjang hari.
+Peternakan: Sapi domestik umumnya dipelihara di peternakan atau lahan pertanian yang lebih kecil untuk tujuan produksi susu, daging, atau keduanya.
+Daerah Tropis dan Subtropis: Beberapa ras sapi telah berkembang untuk bertahan hidup di daerah yang lebih panas, seperti zebu yang tahan terhadap panas dan kelembapan.
 
 </p>
 							`
 						}
-						else if(cls.name == "lemur" && sembilan == false){
-							sembilan = true;
-							description+=`
-							<img src="static/image/gambar-kubung.jpg" alt="">
-							<p id="nama-hewan">Kubung</p>
-
-							<p id="deskripsi">Deskripsi</p>
-							<p id="detail-deskripsi">Kubung, atau yang sering disebut juga sebagai honey badger dalam bahasa Inggris, adalah mamalia kecil yang terkenal karena keberaniannya yang luar biasa dan kemampuannya bertahan hidup dalam kondisi yang sangat sulit. Kubung memiliki tubuh yang kekar dan kompak, dengan bulu yang kasar dan kasar. Tubuh mereka biasanya berwarna abu-abu atau coklat kehitaman dengan garis putih yang memanjang dari kepala hingga ke ekor. Mereka memiliki cakar yang besar dan kuat, yang membantu mereka menggali dan mempertahankan diri.
-
-Kubung adalah hewan yang sangat agresif dan tidak takut pada predator atau manusia. Mereka memiliki reputasi sebagai salah satu hewan dengan keberanian terbesar di dunia hewan, sering kali melawan hewan yang jauh lebih besar dari mereka jika merasa terancam.</p>
-
-							<p id="fakta">Fakta</p>
-							<p id="detail-fakta">Kubung memiliki kulit yang tebal dan longgar, yang memungkinkan mereka untuk bergerak dengan cepat bahkan ketika mereka diserang.
-Mereka sangat tahan terhadap racun dan bisa bertahan hidup setelah digigit oleh ular berbisa atau diterkam oleh predator.
-Kubung dikenal sangat pintar dan cerdik dalam mencari makanan, sering kali memanfaatkan berbagai sumber daya untuk bertahan hidup.</p>
-
-							<p id="ukuran">Ukuran</p>
-							<p id="detail-ukuran">Panjang tubuh: 60–70 cm (termasuk ekor).
-Tinggi di bahu: 23–30 cm.
-Berat: 7–13 kg.</p>
-
-							<p id="ciri-ciri">Ciri-Ciri</p>
-							<p id="detail-ciri-ciri">Keberanian luar biasa: Kubung terkenal karena sikap mereka yang sangat berani, bahkan terhadap predator yang jauh lebih besar, seperti singa atau hyena. Mereka akan melawan dengan gigih jika merasa terancam.
-Kulit tebal dan longgar: Kubung memiliki kulit yang sangat tahan terhadap gigitan dan serangan, yang memberi mereka perlindungan ekstra saat bertarung atau menghadapi bahaya.
-Tahan racun: Kubung memiliki ketahanan yang luar biasa terhadap racun, dan mereka dapat bertahan hidup meskipun digigit oleh ular berbisa atau terpapar racun.</p>
-
-							<p id="sejarah">Sejarah</p>
-							<p id="detail-sejarah">Kubung pertama kali ditemukan di wilayah Afrika sub-Sahara dan Asia Barat. Fosil-fosil menunjukkan bahwa mereka telah ada selama jutaan tahun, dan meskipun ukurannya kecil, mereka telah berkembang menjadi predator yang sangat cerdas dan tangguh. Kubung termasuk dalam keluarga mustelidae, yang juga mencakup weasel, berang-berang, dan linsang.
-
-Meskipun ada banyak cerita dan legenda tentang keberanian kubung, beberapa budaya menganggap hewan ini sebagai simbol keberanian dan ketahanan. Di Afrika, mereka sering dianggap sebagai makhluk yang tidak kenal takut, yang siap melawan musuh yang lebih besar tanpa ragu.</p>
-
-							<p id="pola-makan">Pola Makan</p>
-							<p id="detail-pola-makan">Kubung adalah omnivora, yang berarti mereka memakan berbagai jenis makanan, mulai dari tumbuhan hingga daging. Makanan utama mereka terdiri dari serangga, ular, buah-buahan, dan madu. Mereka sangat dikenal karena kegemarannya terhadap madu, yang menyebabkan mereka dijuluki "honey badger." Kubung menggunakan cakarnya yang kuat untuk menggali sarang lebah dan mengakses madu yang terkandung di dalamnya. Mereka juga sering memangsa binatang kecil, seperti tikus, burung, dan kadal, serta kadang-kadang memakan bangkai hewan yang lebih besar.
-
-Kubung juga dikenal sering berburu ular, bahkan ular berbisa seperti kobra dan mamba. Keberanian dan ketahanan tubuh mereka terhadap racun memungkinkan mereka untuk bertahan hidup meskipun digigit oleh ular berbisa.</p>
-
-							<p id="habitat">Habitat</p>
-							<p id="detail-habitat">Kubung dapat ditemukan di berbagai habitat di seluruh Afrika, Asia Barat, dan sebagian wilayah Timur Tengah, termasuk padang rumput, hutan terbuka, dan gurun. Mereka lebih suka hidup di daerah yang memiliki banyak tempat persembunyian, seperti gua, liang, atau semak-semak yang lebat. Kubung juga dikenal sebagai hewan yang sangat adaptif dan dapat bertahan hidup di berbagai kondisi, mulai dari daerah yang sangat panas hingga daerah yang lebih sejuk.
-
-Mereka cenderung menjadi hewan soliter dan lebih suka hidup sendiri, meskipun mereka akan berinteraksi dengan pasangan atau anak-anak mereka dalam waktu tertentu.</p>
-							`
-						}
-						else if(cls.name == "hyena" && sepuluh == false){
-							sepuluh = true;
-							description+=`
-							<img src="static/image/gambar-dubuk.jpg" alt="">
-							<p id="nama-hewan">Dubuk</p>
-
-							<p id="deskripsi">Deskripsi</p>
-							<p id="detail-deskripsi">Dubuk, atau yang lebih dikenal dengan nama fox dalam bahasa Inggris, adalah jenis mamalia karnivora yang termasuk dalam keluarga Canidae, yang juga mencakup anjing, serigala, dan coyote. Dubuk memiliki tubuh kecil hingga sedang dengan telinga yang tegak, wajah runcing, dan ekor berbulu lebat yang disebut "bristle tail". Bulunya bisa sangat bervariasi tergantung spesiesnya, tetapi sebagian besar dubuk memiliki bulu yang lembut dan tebal yang sering berwarna coklat, merah, atau abu-abu, dengan beberapa pola khas seperti bagian bawah tubuh yang lebih terang.
-
-Mereka dikenal karena kecerdikan dan kemampuan adaptasi mereka yang luar biasa, serta kecenderungan untuk hidup lebih banyak dalam wilayah terbuka atau di sekitar manusia.</p>
-
-							<p id="fakta">Fakta</p>
-							<p id="detail-fakta">Dubuk adalah hewan yang sangat cerdas dan terkenal karena kecerdikan mereka dalam berburu dan menghindari ancaman.
-Mereka memiliki indera penciuman yang sangat tajam dan sering menggunakan hidung mereka untuk mencari makanan.
-Meskipun sering diasosiasikan dengan hutan, banyak dubuk yang hidup di dekat pemukiman manusia, beradaptasi dengan lingkungan perkotaan.</p>
-
-							<p id="ukuran">Ukuran</p>
-							<p id="detail-ukuran">Panjang tubuh (tanpa ekor): 45–90 cm.
-Panjang ekor: 30–55 cm.
-Berat: 3.6–6.3 kg, dengan jantan sedikit lebih besar daripada betina.
-</p>
-
-							<p id="ciri-ciri">Ciri-Ciri</p>
-							<p id="detail-ciri-ciri">Kecerdikan tinggi: Dubuk sangat pintar dan dikenal karena kemampuan mereka dalam menyelesaikan masalah, termasuk cara berburu dan menghindari jebakan. Mereka dapat mempelajari perilaku manusia dan predator lain untuk bertahan hidup.
-Ekor berbulu lebat: Ekor dubuk yang besar dan berbulu lebat berfungsi sebagai penyeimbang saat mereka bergerak cepat dan dapat membantu mereka bertahan dalam cuaca dingin.
-Kemampuan beradaptasi: Salah satu ciri khas dubuk adalah kemampuannya untuk beradaptasi dengan berbagai habitat, mulai dari hutan lebat hingga kota besar, menjadikannya sebagai hewan yang sangat fleksibel dalam hal makanan dan tempat tinggal.</p>
-
-							<p id="sejarah">Sejarah</p>
-							<p id="detail-sejarah">Dubuk telah ada sejak sekitar 40 juta tahun yang lalu, dengan fosil-fosil yang menunjukkan evolusi mereka ke bentuk yang lebih modern. Meskipun dubuk memiliki sejarah panjang, spesies dubuk merah (Vulpes vulpes) adalah yang paling dikenal dan tersebar luas, dengan populasi yang sangat besar di seluruh dunia.
-
-Sejak zaman dahulu, dubuk telah menjadi bagian dari budaya manusia, sering kali digambarkan dalam cerita rakyat, mitologi, dan sastra sebagai simbol kecerdikan dan kelicikan. Dalam beberapa budaya, dubuk dianggap sebagai hewan yang licik atau bahkan sebagai penyihir. Dalam budaya lain, mereka dianggap sebagai simbol kelincahan atau kemampuan untuk beradaptasi dengan berbagai situasi.
-
-Dubuk juga telah diperkenalkan ke beberapa wilayah di luar habitat alami mereka, seperti Australia, di mana mereka dianggap sebagai spesies invasif yang merusak ekosistem lokal.</p>
-
-							<p id="pola-makan">Pola Makan</p>
-							<p id="detail-pola-makan">Dubuk adalah omnivora, yang berarti mereka memakan berbagai jenis makanan baik yang bersumber dari hewan maupun tumbuhan. Makanan utama mereka terdiri dari mamalia kecil (seperti kelinci dan tikus), burung, serangga, dan buah-buahan. Mereka juga dapat memakan telur dan kadang-kadang mencari makanan dari sampah manusia.
-
-Sebagai pemburu oportunistik, dubuk sangat fleksibel dalam pola makan mereka, yang memungkinkan mereka untuk bertahan hidup di berbagai habitat, termasuk daerah yang terpengaruh oleh aktivitas manusia. Pada musim tertentu, mereka juga memakan tanaman, termasuk buah-buahan dan akar-akaran.
-
-</p>
-
-							<p id="habitat">Habitat</p>
-							<p id="detail-habitat">Dubuk dapat ditemukan di hampir seluruh dunia, mulai dari hutan, padang rumput, hingga kawasan pegunungan, bahkan daerah perkotaan. Mereka lebih suka habitat yang menawarkan banyak tempat berlindung dan sumber makanan, seperti semak-semak, pohon, atau lubang di tanah. Dubuk sangat adaptif dan dapat menyesuaikan diri dengan berbagai kondisi lingkungan, bahkan hidup di sekitar manusia. Dalam daerah perkotaan, dubuk sering ditemukan di taman-taman atau kawasan pinggiran kota, di mana mereka dapat mencari makanan dari sampah atau berburu hewan kecil.</p>
-							`
-						}
+						
 						else if(cls.name == "giraffe" && sebelas == false){
 							sebelas = true;
 							description+=`
@@ -1049,99 +933,8 @@ Gajah Asia dapat ditemukan di hutan hujan tropis dan kawasan perbukitan, serta k
 Gajah cenderung hidup dalam kelompok keluarga yang terdiri dari betina dan anak-anaknya, sementara jantan dewasa lebih sering hidup soliter atau dalam kelompok kecil dengan jantan lain. Gajah memiliki migrasi musiman, bergerak dari satu tempat ke tempat lain untuk mencari makanan dan air, terutama pada musim kemarau.</p>
 							`
 						}
-						else if(cls.name == "capybara" && tigabelas == false){
-							tigabelas = true;
-							description+=`
-							<img src="static/image/gambar-capybara.jpg" alt="">
-							<p id="nama-hewan">Capybara</p>
 
-							<p id="deskripsi">Deskripsi</p>
-							<p id="detail-deskripsi">Capybara adalah hewan terbesar yang masih ada dalam keluarga Caviidae, yang juga mencakup marmut dan hewan-hewan kecil lainnya. Capybara memiliki tubuh besar, bentuk pipih, dengan kaki pendek dan kepala yang relatif kecil dibandingkan tubuhnya. Mereka memiliki bulu coklat atau coklat kemerahan yang lembut, dengan bagian bawah tubuh yang lebih terang. Capybara memiliki ekor kecil yang hampir tidak terlihat dan gigi seri yang tumbuh terus sepanjang hidup mereka.
-
-Sebagai hewan sosial, capybara hidup dalam kelompok besar, sering kali terdiri dari 10 hingga 20 individu, meskipun terkadang kelompok ini bisa lebih besar. Mereka adalah hewan semi-akuatik yang sangat cocok untuk hidup di daerah yang dekat dengan sumber air.</p>
-
-							<p id="fakta">Fakta</p>
-							<p id="detail-fakta">Capybara dikenal karena sifatnya yang sangat ramah dan sering terlihat berinteraksi dengan berbagai spesies lain, termasuk hewan lain seperti burung, monyet, dan bahkan manusia.
-Mereka dapat berenang sangat baik dan sering ditemukan berendam di air atau duduk di tepi sungai dan danau.
-Capybara juga dikenal karena suara mereka yang mirip dengan suara panggilan "mew" atau "dengusan" dan memiliki berbagai cara komunikasi vokal.</p>
-
-							<p id="ukuran">Ukuran</p>
-							<p id="detail-ukuran">Panjang tubuh: 100–130 cm.
-Tinggi di bahu: 50–60 cm.
-Berat: 35–65 kg.
-</p>
-
-							<p id="ciri-ciri">Ciri-Ciri</p>
-							<p id="detail-ciri-ciri">Sifat sosial: Capybara adalah hewan yang sangat sosial dan sering hidup dalam kelompok yang terdiri dari berbagai individu. Kelompok ini dapat membantu dalam melindungi diri mereka dari predator dan memberikan rasa aman.
-Kemampuan berenang: Capybara adalah perenang yang mahir dan menghabiskan banyak waktu di dalam air. Mereka memiliki tubuh yang dirancang untuk berenang dengan efisien, dengan kaki yang memiliki selaput di antara jari-jari mereka untuk membantu dalam berenang.
-Komunikasi vokal: Capybara menggunakan berbagai suara untuk berkomunikasi, mulai dari suara panggilan yang lembut hingga suara yang lebih keras saat merasa terancam. Mereka juga dapat membuat suara geraman atau dengusan ketika merasa terancam.</p>
-
-							<p id="sejarah">Sejarah</p>
-							<p id="detail-sejarah">Capybara telah ada selama jutaan tahun, dengan fosil-fosil yang menunjukkan bahwa nenek moyang mereka sudah ada sejak zaman Pleistosen. Mereka berasal dari Amerika Selatan dan telah menyebar ke berbagai habitat yang berbeda di benua tersebut. Secara historis, capybara telah dihormati dan dijaga oleh banyak budaya asli, dan mereka masih menjadi sumber makanan bagi beberapa komunitas di kawasan tropis Amerika Selatan.
-
-Sebagai hewan yang relatif damai dan mudah didekati, capybara telah menjadi hewan peliharaan populer di beberapa bagian dunia, meskipun mereka lebih suka hidup di alam liar dengan kelompoknya. Mereka juga menjadi subjek dalam berbagai studi tentang perilaku hewan sosial dan ekologi.</p>
-
-							<p id="pola-makan">Pola Makan</p>
-							<p id="detail-pola-makan">Capybara adalah herbivora, yang berarti mereka hanya memakan tumbuhan. Makanan utama mereka terdiri dari rumput, dedaunan, dan kulit pohon. Mereka memiliki kebiasaan makan yang unik, yaitu makan sebagian dari tanaman, kemudian memuntahkannya untuk mengunyah kembali, yang membantu mereka mencerna serat tanaman yang sulit dicerna. Mereka juga memakan buah-buahan dan tanaman air jika tersedia.
-
-Sebagai hewan yang cenderung lebih aktif pada pagi dan sore hari, capybara menghabiskan waktu sebagian besar untuk mencari makanan di padang rumput atau di tepi sungai. Mereka sangat bergantung pada vegetasi yang melimpah di habitat mereka untuk mendapatkan nutrisi yang mereka butuhkan.</p>
-
-							<p id="habitat">Habitat</p>
-							<p id="detail-habitat">Capybara ditemukan di berbagai daerah di Amerika Selatan, terutama di wilayah dataran rendah yang memiliki banyak sungai, danau, rawa, dan padang rumput yang luas. Mereka lebih suka hidup di tempat yang dekat dengan air, seperti tepi sungai, danau, atau rawa, karena mereka sangat bergantung pada air untuk menjaga suhu tubuh mereka tetap terjaga dan untuk mencari makanan.
-
-Capybara hidup dalam kelompok besar, biasanya terdiri dari 10 hingga 20 individu, meskipun dalam beberapa kasus, mereka dapat bergabung dengan kelompok yang lebih besar jika kondisi memungkinkan. Kelompok capybara biasanya dipimpin oleh betina yang dominan. Mereka juga dapat membentuk hubungan dengan spesies lain, seperti burung yang duduk di tubuh mereka atau hewan lain yang berbagi lingkungan yang sama.</p>
-							`
-						}
-
-						else if(cls.name == "camel" && empatbelas == false){
-							empatbelas = true;
-							description+=`
-							<img src="static/image/gambar-unta.jpeg" alt="">
-							<p id="nama-hewan">Unta</p>
-
-							<p id="deskripsi">Deskripsi</p>
-							<p id="detail-deskripsi">Unta adalah mamalia besar yang dikenal dengan kemampuan mereka untuk bertahan hidup di padang pasir dan lingkungan yang keras. Ada dua spesies utama unta yang ada saat ini:
-
-Unta Dromedaris (Camelus dromedarius): Memiliki satu punuk di punggungnya dan ditemukan terutama di daerah Timur Tengah, Afrika Utara, dan sebagian India.
-Unta Bactrian (Camelus bactrianus): Memiliki dua punuk dan umumnya ditemukan di Asia Tengah, termasuk Mongolia dan China.
-Unta dikenal dengan tubuh yang besar dan kuat, kaki panjang yang dilengkapi dengan bantalan kaki yang tebal untuk berjalan di pasir, serta punuk yang menjadi ciri khas mereka. Punuk tersebut bukanlah tempat penyimpanan air, melainkan cadangan lemak yang digunakan sebagai sumber energi saat makanan sulit didapatkan.</p>
-
-							<p id="fakta">Fakta</p>
-							<p id="detail-fakta">Unta bisa bertahan tanpa air dalam waktu yang cukup lama (hingga beberapa minggu) berkat kemampuannya untuk mengatur suhu tubuh dan menyimpan cairan.
-Mereka dapat mengonsumsi makanan yang tidak bisa dimakan oleh hewan lain, seperti tanaman berduri dan garam.
-Unta juga memiliki kemampuan untuk mengubah kadar garam dalam tubuh mereka, yang memungkinkan mereka untuk minum air yang sangat asin tanpa mengalami masalah.</p>
-
-							<p id="ukuran">Ukuran</p>
-							<p id="detail-ukuran">Unta Dromedaris:
-Tinggi: 1.8–2.0 meter di bahu.
-Berat: 400–600 kg.
-Unta Bactrian:
-Tinggi: 1.8–2.2 meter di bahu.
-Berat: 450–1,000 kg.</p>
-
-							<p id="ciri-ciri">Ciri-Ciri</p>
-							<p id="detail-ciri-ciri">Punuk: Punuk unta berfungsi untuk menyimpan lemak, bukan air. Ini memberi mereka kemampuan untuk bertahan hidup dalam kondisi kekurangan makanan atau air. Punuk ini juga memberi unta energi cadangan yang mereka perlukan saat mereka tidak bisa makan atau minum dalam waktu lama.
-Kemampuan bertahan hidup tanpa air: Salah satu ciri khas utama unta adalah kemampuannya untuk bertahan hidup tanpa air selama berhari-hari atau bahkan minggu. Mereka dapat mengurangi penguapan cairan dan mengatur suhu tubuh mereka agar tetap stabil.
-Kaki tebal dan bulu: Kaki unta dilengkapi dengan bantalan tebal yang memungkinkan mereka berjalan di pasir panas tanpa terbakar, sementara bulu mereka membantu melindungi tubuh mereka dari sinar matahari yang terik di siang hari dan menjaga mereka tetap hangat pada malam hari yang dingin.</p>
-
-							<p id="sejarah">Sejarah</p>
-							<p id="detail-sejarah">Unta pertama kali dijinakkan sekitar 3,000 tahun yang lalu di Timur Tengah dan Asia Tengah, di mana mereka digunakan sebagai hewan beban dan transportasi, terutama di wilayah gurun. Mereka menjadi sangat penting dalam perdagangan jalur sutra dan jalur karavan, karena kemampuannya untuk membawa barang dalam jarak jauh melalui gurun yang keras.
-
-Unta telah memainkan peran penting dalam kehidupan manusia, baik sebagai transportasi untuk orang-orang yang bergerak melintasi gurun atau sebagai sumber makanan, susu, dan wol. Dalam beberapa budaya, seperti di Timur Tengah dan Afrika Utara, unta juga memiliki nilai simbolis yang tinggi dan sering kali dianggap sebagai "kapal gurun" karena peranannya yang tak tergantikan dalam kehidupan sehari-hari.
-
-Spesies unta Bactrian dulunya lebih tersebar luas, tetapi dengan berkembangnya teknologi transportasi modern, populasi unta Bactrian menjadi lebih terbatas, sementara Dromedaris tetap banyak digunakan di seluruh dunia.</p>
-
-							<p id="pola-makan">Pola Makan</p>
-							<p id="detail-pola-makan">Unta adalah herbivora, yang berarti mereka hanya memakan tumbuhan. Mereka makan berbagai jenis tanaman yang bisa mereka temui di padang pasir atau daerah semi-kering, termasuk semak-semak, dedaunan, dan rumput. Unta memiliki kebiasaan makan yang sangat berbeda dari hewan herbivora lainnya, karena mereka dapat mengkonsumsi tumbuhan yang sangat keras, berduri, atau asin, seperti tumbuhan garam atau tanaman berduri yang tidak dapat dimakan oleh kebanyakan hewan lain.
-
-Punuk unta menyimpan lemak yang dapat diubah menjadi energi dan cadangan air jika makanan atau air sulit ditemukan. Unta dapat makan dalam jumlah besar sekaligus, lalu bertahan hidup dengan cadangan yang mereka simpan untuk jangka waktu yang lama.</p>
-
-							<p id="habitat">Habitat</p>
-							<p id="detail-habitat">Unta berasal dari daerah padang pasir dan semi-kering, di mana suhu dapat sangat tinggi pada siang hari dan sangat dingin pada malam hari. Habitat utama unta mencakup padang pasir, savana, dan wilayah gurun yang luas, dengan kondisi yang sangat kering dan sedikit air. Spesies unta Dromedaris lebih banyak ditemukan di Timur Tengah, Afrika Utara, dan India, sementara unta Bactrian hidup di wilayah yang lebih dingin, seperti Mongolia, Cina, dan bagian-bagian Asia Tengah.
-
-Unta dapat beradaptasi dengan kondisi ekstrem, mampu bertahan di lingkungan yang sangat panas dan kering dengan sangat sedikit air. Mereka sering ditemukan di kawasan padang pasir yang luas, tempat mereka dapat berjalan jauh untuk mencari makanan dan air.</p>
-							`
-						}
+					
 
 					})
 
@@ -1166,16 +959,14 @@ Unta dapat beradaptasi dengan kondisi ekstrem, mampu bertahan di lingkungan yang
 		startWebcamButton.onclick = () => {
             webcamContainer.style.display = 'block';
             webcamFeed.src = '/webcam';
-            // startWebcamButton.style.display = 'none';
-            // stopWebcamButton.style.display = 'inline';
+
 			resultDiv.innerHTML = ``;
         };
 
         stopWebcamButton.onclick = () => {
             webcamContainer.style.display = 'none';
             webcamFeed.src = '';  // Stop the feed
-            // stopWebcamButton.style.display = 'none';
-            // startWebcamButton.style.display = 'inline';
+
 			resultDiv.innerHTML = ``;
         };
 		</script>
